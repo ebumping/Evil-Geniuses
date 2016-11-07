@@ -7,7 +7,7 @@ public class TDB {
 	
 	public TDB(){
 		users.add(new User("Ted", "Cruz", "zodiac@gmail.com"));
-		users.add(new User("", "", ""));
+		users.add(new User("Dyl", "J", "ebumping@gmail.com"));
 		
 	}
 	public void addUser(User user) throws Exception{
@@ -19,6 +19,10 @@ public class TDB {
 	}
 	public User findUser(String firstName, String lastName){
 		User foundUser = null;
+		if(users.equals(firstName + lastName)){
+			return users.get(0);
+		}
+		return foundUser;
 		
 			
 		

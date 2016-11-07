@@ -17,7 +17,6 @@ public class MyFirstWindow {
 	private JTextField firstName;
 	private JTextField lastName;
 	private JTextField email;
-	//private JPasswordField password;
 	private TDB database;
 
 	/**
@@ -58,8 +57,9 @@ public class MyFirstWindow {
 			public void actionPerformed(ActionEvent e) {
 				
 				User u = new User(firstName.getText(), lastName.getText(),email.getText());
-				
-				System.out.println();
+				//database.addUser();
+				database.findUser(firstName.getText(), lastName.getText());
+				System.out.println(database.users);
 				
 					//try catch in here
 				
@@ -118,24 +118,19 @@ public class MyFirstWindow {
 		JButton btnList = new JButton("List");
 		btnList.setBounds(10, 199, 89, 23);
 		frame.getContentPane().add(btnList);
-		/*
-		password = new JPasswordField();
-		password.setBounds(133, 228, 86, 20);
-		frame.getContentPane().add(password);
 		
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(77, 231, 46, 14);
-		frame.getContentPane().add(lblPassword);*/
 	}
 	private void setFields(User user){
 		firstName.setText(user.getFirstName());
 		lastName.setText(user.getLastName());
 		email.setText(user.getEmail());
-		//password.setText("xkcd");
+		
 	}
 	
 	private User getUser(){
-		return null ;
+		if(database.users.contains(firstName.getText()) & database.users.contains(lastName.getText()))
+			//needs to be fixed
+		return null;
 		
 		//change this to return something
 		
