@@ -7,7 +7,7 @@ public class TDB {
 	
 	public TDB(){
 		users.add(new User("Ted", "Cruz", "zodiac@gmail.com"));
-		users.add(new User("Dyl", "J", "ebumping@gmail.com"));
+		users.add(new User("Dylan ", "Jeffery", "ebumping@gmail.com"));
 		
 	}
 	public void addUser(User user) throws Exception{
@@ -17,18 +17,17 @@ public class TDB {
 			users.add(user);
 		}
 	}
-	public User findUser(String firstName, String lastName){
+	public User findUser(String firstName, String lastName) throws Exception{
 		User foundUser = null;
-		if(users.equals(firstName + lastName)){
-			return users.get(0);
-		}
-		return foundUser;
-		
+		if(users.contains(firstName) && users.contains(lastName)){
+			throw new Exception("User found");
 			
 		
-		
-		}
+		}else{
+			return foundUser;
+		}		
 	}
+}
 	/*
 	 * Sort User
 	 

@@ -54,11 +54,15 @@ public class MyFirstWindow {
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				User u = new User(firstName.getText(), lastName.getText(),email.getText());
 				//database.addUser();
-				database.findUser(firstName.getText(), lastName.getText());
+				try {
+					database.addUser(u);
+				} catch (Exception e1) {					
+					e1.printStackTrace();
+				}
+				//database.findUser(firstName.getText(), lastName.getText());
 				System.out.println(database.users);
 				
 					//try catch in here
@@ -103,10 +107,6 @@ public class MyFirstWindow {
 		frame.getContentPane().add(email);
 		email.setColumns(10);
 		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(10, 131, 89, 23);
-		frame.getContentPane().add(btnSearch);
-		
 		JButton btnSort = new JButton("Sort");
 		btnSort.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -119,6 +119,29 @@ public class MyFirstWindow {
 		btnList.setBounds(10, 199, 89, 23);
 		frame.getContentPane().add(btnList);
 		
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				User u = new User(firstName.getText(), lastName.getText());
+				try {
+					System.out.println(database.findUser(firstName.getText(), lastName.getText()));
+				} catch (Exception e1) {
+				
+					e1.printStackTrace();
+				}
+				
+				/*
+				if(database.users.contains(u)){
+					System.out.println(u);
+				}else{
+					System.out.println("User not found...");
+				}*/
+			}
+				
+		});
+		btnSearch.setBounds(10, 227, 89, 23);
+		frame.getContentPane().add(btnSearch);
+		
 	}
 	private void setFields(User user){
 		firstName.setText(user.getFirstName());
@@ -128,10 +151,17 @@ public class MyFirstWindow {
 	}
 	
 	private User getUser(){
-		if(database.users.contains(firstName.getText()) & database.users.contains(lastName.getText()))
+		if(database.users.contains(firstName.getText()) && database.users.contains(lastName.getText())){
+			System.out.println(firstName + "Is in this database");
+			try {
+				return database.findUser(firstName.getText(), lastName.getText());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else{
 			//needs to be fixed
-		return null;
 		
+		}return null;
 		//change this to return something
 		
 	}

@@ -12,6 +12,11 @@ public class User {
 		
 	}
 	
+	public User(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -31,7 +36,7 @@ public class User {
 		this.email = email;
 	}
 	public String toString(){
-		return "First Name: " + firstName + "Last Name: " + "Email: " + email;
+		return "First Name: " + firstName + " Last Name: " + lastName + " Email: " + email;
 		
 	}
 }
