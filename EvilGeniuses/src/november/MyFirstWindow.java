@@ -130,8 +130,6 @@ public class MyFirstWindow {
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				//User u = new User(firstName.getText(), lastName.getText());
-				//database.users.contains(u);
 				for(User u : database.users){
 					if (u.getFirstName().equals(firstName.getText()) && u.getLastName().equals(lastName.getText())){
 					System.out.println("User found");
