@@ -1,13 +1,16 @@
 package november;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 public class TDB {
 	List<User> users = new ArrayList<User>();
 	
 	public TDB(){
 		users.add(new User("Ted", "Cruz", "zodiac@gmail.com"));
-		users.add(new User("Dylan ", "Jeffery", "ebumping@gmail.com"));
+		users.add(new User("Dylan", "Jeffery", "ebumping@gmail.com"));
+		users.add(new User("Nova", "Dog", "borkbork@gmail.com"));
+		users.add(new User("Linz", "C", "LZ@gmail.com"));
 		
 	}
 	public void addUser(User user) throws Exception{
@@ -17,15 +20,18 @@ public class TDB {
 			users.add(user);
 		}
 	}
-	public User findUser(String firstName, String lastName) throws Exception{
-		User foundUser = null;
-		if(users.contains(firstName) && users.contains(lastName)){
-			throw new Exception("User found");
-			
+	public User findUser(String firstName, String lastName){
 		
-		}else{
-			return foundUser;
-		}		
+		User foundUser = null;
+		for(int i = 0; i < firstName.length(); i++){
+			
+		}
+		return foundUser;
+		
+		
+		
+		
+			
 	}
 }
 	/*
