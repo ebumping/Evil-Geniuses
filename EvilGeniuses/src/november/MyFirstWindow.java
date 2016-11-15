@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 //import javax.swing.JPasswordField;
 
 
@@ -18,7 +19,9 @@ public class MyFirstWindow {
 	private JTextField firstName;
 	private JTextField lastName;
 	private JTextField email;
+	private JTextField pass;
 	private TDB database;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -123,10 +126,6 @@ public class MyFirstWindow {
 		btnSort.setBounds(10, 165, 89, 23);
 		frame.getContentPane().add(btnSort);
 		
-		JButton btnList = new JButton("List");
-		btnList.setBounds(10, 199, 89, 23);
-		frame.getContentPane().add(btnList);
-		
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -141,12 +140,41 @@ public class MyFirstWindow {
 		btnSearch.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnSearch);
 		
-	}
-	private void setFields(User user){
-		firstName.setText(user.getFirstName());
-		lastName.setText(user.getLastName());
-		email.setText(user.getEmail());
+		JButton btnDelete = new JButton("Delete");
+		btnDelete.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				for(User u : database.users){
+					if(u.getFirstName().equals(firstName.getText()) && u.getLastName().equals(lastName.getText())){
+						database.users.remove(u);
+					}
+				}
+			}
+		});
+		
+		btnDelete.setBounds(10, 199, 89, 23);
+		frame.getContentPane().add(btnDelete);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(315, 11, 59, 20);
+		frame.getContentPane().add(passwordField);
+		
+		JLabel lblPass = new JLabel("Pass");
+		lblPass.setBounds(259, 14, 46, 14);
+		frame.getContentPane().add(lblPass);
+		
+		JButton btnList = new JButton("List");
+		btnList.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+					
+					if (pass.getText().equals("xkcd") ){
+						System.out.println(database.users);
+				}
+				}
+				
+			
+		});
+		btnList.setBounds(297, 34, 89, 23);
+		frame.getContentPane().add(btnList);
 		
 	}
-	
 }
