@@ -10,9 +10,9 @@ public class TDB {
 		users.add(new User("Ted", "Cruz", "zodiac@gmail.com"));
 		users.add(new User("Dylan", "Jeffery", "ebumping@gmail.com"));
 		users.add(new User("Nova", "Dog", "borkbork@gmail.com"));
-		users.add(new User("Linz", "C", "LZ@gmail.com"));
-		
+		users.add(new User("Linz", "C", "LZ@gmail.com"));		
 	}
+
 	public void addUser(User user) throws Exception{
 		if (user.getFirstName().isEmpty() && user.getLastName().isEmpty() && user.getEmail().isEmpty()){
 			throw new Exception("First Name, Last Name and email are required fields");
@@ -20,18 +20,21 @@ public class TDB {
 			users.add(user);
 		}
 	}
+	public void delUser(User user) throws Exception{
+		if(user.getFirstName().isEmpty() && user.getLastName().isEmpty()){
+			throw new Exception("Cannot remove | No user specified.");
+		}else{
+			users.removeAll(users);
+		}
+		
+	}
+	
 	public User findUser(String firstName, String lastName){
 		
 		User foundUser = null;
-		for(int i = 0; i < firstName.length(); i++){
-			
+		for(int i = 0; i < firstName.length(); i++){			
 		}
-		return foundUser;
-		
-		
-		
-		
-			
+		return foundUser;			
 	}
 }
 	/*

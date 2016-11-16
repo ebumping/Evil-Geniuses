@@ -19,9 +19,7 @@ public class MyFirstWindow {
 	private JTextField firstName;
 	private JTextField lastName;
 	private JTextField email;
-	private JTextField pass;
 	private TDB database;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -63,12 +61,10 @@ public class MyFirstWindow {
 				//database.addUser();
 				try {
 					database.addUser(u);
-				} catch (Exception e1) {					
+				}catch (Exception e1) {					
 					e1.printStackTrace();
 				}
-				for(User x : database.users){
-					System.out.println(x);
-				}
+
 				//System.out.println(database.users);
 				
 					//try catch in here
@@ -143,20 +139,23 @@ public class MyFirstWindow {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				for(User u : database.users){
-					if(u.getFirstName().equals(firstName.getText()) && u.getLastName().equals(lastName.getText())){
-						database.users.remove(u);
-					}
-				}
+				User x = new User(firstName.getText(), lastName.getText());
+
+						try{
+							database.delUser(x);
+							
+						}catch(Exception e1){
+							e1.printStackTrace();
+						}
+					
+						
+
+				
 			}
 		});
 		
 		btnDelete.setBounds(10, 199, 89, 23);
-		frame.getContentPane().add(btnDelete);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(315, 11, 59, 20);
-		frame.getContentPane().add(passwordField);
+		frame.getContentPane().add(btnDelete);		
 		
 		JLabel lblPass = new JLabel("Pass");
 		lblPass.setBounds(259, 14, 46, 14);
@@ -165,9 +164,8 @@ public class MyFirstWindow {
 		JButton btnList = new JButton("List");
 		btnList.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-					
-					if (pass.getText().equals("xkcd") ){
-						System.out.println(database.users);
+				for(User x : database.users){
+					System.out.println(x);
 				}
 				}
 				
