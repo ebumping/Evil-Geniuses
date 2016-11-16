@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.Color;
 //import javax.swing.JPasswordField;
 
 
@@ -119,7 +120,7 @@ public class MyFirstWindow {
 				
 			}
 		});
-		btnSort.setBounds(10, 165, 89, 23);
+		btnSort.setBounds(10, 172, 89, 23);
 		frame.getContentPane().add(btnSort);
 		
 		JButton btnSearch = new JButton("Search");
@@ -136,7 +137,9 @@ public class MyFirstWindow {
 		btnSearch.setBounds(10, 227, 89, 23);
 		frame.getContentPane().add(btnSearch);
 		
-		JButton btnDelete = new JButton("Delete");
+		JButton btnDelete = new JButton("Clinton");
+		btnDelete.setBackground(Color.RED);
+		btnDelete.setForeground(Color.BLACK);
 		btnDelete.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				User x = new User(firstName.getText(), lastName.getText());
@@ -154,12 +157,8 @@ public class MyFirstWindow {
 			}
 		});
 		
-		btnDelete.setBounds(10, 199, 89, 23);
-		frame.getContentPane().add(btnDelete);		
-		
-		JLabel lblPass = new JLabel("Pass");
-		lblPass.setBounds(259, 14, 46, 14);
-		frame.getContentPane().add(lblPass);
+		btnDelete.setBounds(335, 59, 89, 23);
+		frame.getContentPane().add(btnDelete);
 		
 		JButton btnList = new JButton("List");
 		btnList.addActionListener(new ActionListener(){
@@ -171,7 +170,7 @@ public class MyFirstWindow {
 				
 			
 		});
-		btnList.setBounds(297, 34, 89, 23);
+		btnList.setBounds(10, 199, 89, 23);
 		frame.getContentPane().add(btnList);
 		
 	}
