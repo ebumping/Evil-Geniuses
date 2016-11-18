@@ -1,2 +1,1 @@
-meow|cat
-woof|dog
+Nova|Dog
