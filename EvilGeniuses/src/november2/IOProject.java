@@ -26,21 +26,40 @@ public class IOProject {
 			e.printStackTrace();
 		}
 	}
-	public void writeFile(){
+	private void hots(){
+	try{
+		Scanner inHoTS = new Scanner(new FileReader("hots.txt"));
+		while(inHoTS.hasNext()){
+			String line = inHoTS.next();
+			int x = line.indexOf("|");
+			int y = line.lastIndexOf("|");
+			String hero = line.substring(0, x);
+			String build = line.substring(x+1, line.length());
+			//String altBuild = line.substring(")something");
+			System.out.println(hero);
+			System.out.println(build);
+			//System.out.println(altBuild);
+		}inHoTS.close();
+	}catch(FileNotFoundException e) {
+		e.printStackTrace();}
+	}
+	/*public void writeFile(){
 		BufferedWriter out = null;
 		try{
 			FileWriter fstream = new FileWriter("games.txt");
 			out = new BufferedWriter(fstream);
 			out.write("Nova|Dog");
+			out.write();
 			out.close();
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-	}
+	}*/
 	public static void main(String[] arg){
 		IOProject iop = new IOProject();
-		iop.writeFile();
-		iop.loadGames();
+		//iop.writeFile();
+		//iop.loadGames();
+		iop.hots();
 	}
 
 }
