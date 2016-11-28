@@ -12,14 +12,12 @@ public class IOProject {
 		try{
 			Scanner inFile = new Scanner(new FileReader("games.txt"));
 			while (inFile.hasNext()){
-				String line = inFile.next();
-				//System.out.println(line);
+				String line = inFile.next();				
 				int x = line.indexOf("|");						
 				String hint = line.substring(0, x);
 				String ans = line.substring(x+1, line.length());
 				System.out.println(hint);
-				System.out.println(ans);
-				
+				System.out.println(ans);				
 			}
 			inFile.close();
 		}catch (FileNotFoundException e){
@@ -31,8 +29,7 @@ public class IOProject {
 		Scanner inHoTS = new Scanner(new FileReader("hots.txt"));
 		while(inHoTS.hasNext()){
 			String line = inHoTS.next();
-			int x = line.indexOf("|");
-			int y = line.lastIndexOf("|");
+			int x = line.indexOf("|");			
 			String hero = line.substring(0, x);
 			String build = line.substring(x+1, line.length());
 			//String altBuild = line.substring(")something");

@@ -1,1 +1,3 @@
-Zeratul|http://www.heroesnexus.com/talent-calculator/18-zeratul#jPDeAAlCrCHemCSAA | Test
+Abathur|http://www.heroesnexus.com/talent-calculator/2-abathur#DOsbIAFArERAnECAA
+Alarak|http://www.heroesnexus.com/talent-calculator/88-alarak#CcMcOcEcWcVcKcYBA
+Zeratul|http://www.heroesnexus.com/talent-calculator/18-zeratul#jPDeAAlCrCHemCSAA
