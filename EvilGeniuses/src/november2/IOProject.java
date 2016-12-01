@@ -24,6 +24,7 @@ public class IOProject {
 			e.printStackTrace();
 		}
 	}*/
+	//List hero builds
 	private void hots(){
 	try{
 		Scanner inHoTS = new Scanner(new FileReader("hots.txt"));
