@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class IOProject {
 	
-	private void loadGames(){
+	/*private void loadGames(){
 		try{
 			Scanner inFile = new Scanner(new FileReader("games.txt"));
 			while (inFile.hasNext()){
@@ -20,11 +20,10 @@ public class IOProject {
 				System.out.println(ans);				
 			}
 			inFile.close();
-		}catch (FileNotFoundException e){
-			System.out.println("This is it");
+		}catch (FileNotFoundException e){			
 			e.printStackTrace();
 		}
-	}
+	}*/
 	private void hots(){
 	try{
 		Scanner inHoTS = new Scanner(new FileReader("hots.txt"));
@@ -46,9 +45,9 @@ public class IOProject {
 		try{
 			FileWriter fstream = new FileWriter("games.txt");
 			out = new BufferedWriter(fstream);
-			out.write("Brightwing (mist)|http://www.heroesnexus.com/talent-calculator/26-brightwing#NSISJIAAMSJSGSaAA");			
+			//out.write();			
 			out.close();
-		} catch(Exception e){
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
