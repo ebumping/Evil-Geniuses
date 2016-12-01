@@ -21,6 +21,7 @@ public class IOProject {
 			}
 			inFile.close();
 		}catch (FileNotFoundException e){
+			System.out.println("This is it");
 			e.printStackTrace();
 		}
 	}
@@ -40,21 +41,20 @@ public class IOProject {
 	}catch(FileNotFoundException e) {
 		e.printStackTrace();}
 	}
-	/*public void writeFile(){
+	public void writeFile(){
 		BufferedWriter out = null;
 		try{
 			FileWriter fstream = new FileWriter("games.txt");
 			out = new BufferedWriter(fstream);
-			out.write("Nova|Dog");
-			out.write();
+			out.write("Brightwing (mist)|http://www.heroesnexus.com/talent-calculator/26-brightwing#NSISJIAAMSJSGSaAA");			
 			out.close();
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-	}*/
+	}
 	public static void main(String[] arg){
 		IOProject iop = new IOProject();
-		//iop.writeFile();
+		iop.writeFile();
 		//iop.loadGames();
 		iop.hots();
 	}
