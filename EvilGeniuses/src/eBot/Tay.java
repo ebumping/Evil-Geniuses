@@ -20,6 +20,7 @@ public class Tay extends PircBot{
 			String time = new java.util.Date().toString();
 			sendMessage(channel, sender + ": The time is now " + time);
 		}
+		}
 	}
 	
 	@Override
@@ -28,7 +29,7 @@ public class Tay extends PircBot{
 		joinChannel(channelName);
 		
 		super.onConnect();
-		sendMessage(getchannelName(), "Hello I am an artificial intelligence, subserviant to my master... EBumping");
+		sendMessage(getchannelName(), "Hello I am an artificial intelligence, subserviant to my master... Ebumping");
 		sendMessage(getchannelName(), "Show me your Kappa s");
 	}
 

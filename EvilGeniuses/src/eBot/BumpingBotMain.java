@@ -27,8 +27,6 @@ public class BumpingBotMain {
 			Logger.getLogger(Tay.class.getName()).log(Level.SEVERE, null, ex);
 		}catch(IrcException ex){
 			Logger.getLogger(Tay.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		//oath token oauth:g5ztrdza7uu4vfr37ta7peaszvsal1
+		}		
 	}
-
 }
