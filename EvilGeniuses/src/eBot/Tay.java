@@ -19,9 +19,14 @@ public class Tay extends PircBot{
 		if (message.equalsIgnoreCase("time")){
 			String time = new java.util.Date().toString();
 			sendMessage(channel, sender + ": The time is now " + time);
+		}else if(message.equalsIgnoreCase("malf")){
+			sendMessage(channel, sender + " https://clips.twitch.tv/ebumping/SillyWaspDuDudu");
+		 }else if(message.equalsIgnoreCase("gust")){
+			 sendMessage(channel, sender + " https://clips.twitch.tv/ebumping/BrainyOctopusAsianGlow"); 
+		 }
 		}
 		
-	}
+	
 	
 	@Override
 	protected void onConnect(){
@@ -29,7 +34,7 @@ public class Tay extends PircBot{
 		joinChannel(channelName);
 		
 		super.onConnect();
-		sendMessage(getchannelName(), "Hello I am an artificial intelligence, subserviant to my master... Ebumping");
+		sendMessage(getchannelName(), "MrDestructoid Hello I am an artificial intelligence, subserviant to my master... Ebumping MrDestructoid");
 		sendMessage(getchannelName(), "Show me your Kappa s");
 	}
 
