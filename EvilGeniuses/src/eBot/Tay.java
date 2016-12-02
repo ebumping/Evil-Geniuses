@@ -20,7 +20,7 @@ public class Tay extends PircBot{
 			String time = new java.util.Date().toString();
 			sendMessage(channel, sender + ": The time is now " + time);
 		}
-		}
+		
 	}
 	
 	@Override
