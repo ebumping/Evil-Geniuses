@@ -60,3 +60,17 @@ public class IOProject {
 	}
 
 }
+
+
+/* Thank new followers
+ * Moderate users(ban or timeout bad words)
+ * Provide hero build links
+ * Current song or provide links to my soundcloud
+ * perhaps a currency minigame(every hour a user is awarded 100 currency, every 10-15 minutes the user may gamble with the currency they have along with others in chat)
+ * thx followers
+ * chat moderation
+ * AI response
+ * track time
+ * rewards
+ * 
+*/
