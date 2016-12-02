@@ -4,7 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.jibble.pircbot.*;
-
+//to import this right click JRE Sys Lib and import app rar from mybot folder
 public class BumpingBotMain {
 	private static final String OAUTH = "oauth:g5ztrdza7uu4vfr37ta7peaszvsal1";
 	private static final String address = "irc.chat.twitch.tv";
