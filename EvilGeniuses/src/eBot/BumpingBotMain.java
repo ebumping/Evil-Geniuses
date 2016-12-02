@@ -22,7 +22,7 @@ public class BumpingBotMain {
 		
 		//this will connect to the IRC server
 		t.connect(address, port, OAUTH);
-		
+		//Logger object displays bot connection status messages
 		}catch(IOException ex){
 			Logger.getLogger(Tay.class.getName()).log(Level.SEVERE, null, ex);
 		}catch(IrcException ex){

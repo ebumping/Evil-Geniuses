@@ -2,9 +2,7 @@ package eBot;
 import org.jibble.pircbot.*;
 
 public class Tay extends PircBot{
-	private static final String channelName = "#ebumping";
-												//"#mychannel"
-	
+	private static final String channelName = "#ebumping";													
 	private final String botName = "bumpingbot";
 	
 	public Tay(){
@@ -32,5 +30,8 @@ public class Tay extends PircBot{
 		super.onConnect();
 		sendMessage(getchannelName(), "Hello I am a bot");
 	}
+
+	
+	
 
 }
