@@ -28,7 +28,8 @@ public class Tay extends PircBot{
 		joinChannel(channelName);
 		
 		super.onConnect();
-		sendMessage(getchannelName(), "Hello I am a bot");
+		sendMessage(getchannelName(), "Hello I am an artificial intelligence, subserviant to my master... EBumping");
+		sendMessage(getchannelName(), "Show me your Kappa s");
 	}
 
 	
