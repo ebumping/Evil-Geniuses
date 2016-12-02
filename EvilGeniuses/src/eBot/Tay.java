@@ -23,6 +23,8 @@ public class Tay extends PircBot{
 			sendMessage(channel, sender + " https://clips.twitch.tv/ebumping/SillyWaspDuDudu");
 		 }else if(message.equalsIgnoreCase("gust")){
 			 sendMessage(channel, sender + " https://clips.twitch.tv/ebumping/BrainyOctopusAsianGlow"); 
+		 }else if (message.equalsIgnoreCase("mmr")){
+			 sendMessage(channel, sender + " My current MMR | http://www.hotslogs.com/Player/Profile?PlayerID=757302");
 		 }
 		}
 		
