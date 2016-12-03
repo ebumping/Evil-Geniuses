@@ -1,5 +1,7 @@
 package eBot;
 import org.jibble.pircbot.*;
+import java.io.FileReader;
+
 
 public class Tay extends PircBot{
 	private static final String channelName = "#ebumping";													
@@ -28,7 +30,11 @@ public class Tay extends PircBot{
 		 }
 		}
 		
-	
+	/*@Override
+	protected void onJoin(String channel, String sender,
+			String login, String hostname){
+		sendMessage(getchannelName(), "Welcome to the channel " + sender);
+	}*/
 	
 	@Override
 	protected void onConnect(){
