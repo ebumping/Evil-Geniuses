@@ -1,28 +1,49 @@
 package eBot;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.EnableCapHandler;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
+import org.pircbotx.hooks.events.TimeEvent;
+import org.pircbotx.hooks.events.UserListEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
 
 public class TayX extends ListenerAdapter {
 	private static final String OAUTH = "oauth:eowkoscj18s4sjcpkhy0x0ay7kqy3z";
 	private static final String address = "irc.chat.twitch.tv";
 	private static final String channelName = "#ebumping";
-	//private static int port = 6667;
+	//private Users userlist;
 	
-
-			
+	String time = new java.util.Date().toString();
+	//private static int port = 6667;
+	//List <Users> users = new ArrayList<Users>();
+	
+		@Override
+		public void onTime(TimeEvent event) throws Exception {
+			BufferedWriter out = null;
+			super.onTime(event);
+			event.getTimestamp();
+		}
 		
+		@Override
+		public void onUserList(UserListEvent event) throws Exception {
+			//userlist = new Users();
+			//BufferedWriter usr = null;
+			super.onUserList(event);
+			event.getUsers().asList();
+		
+		}
         @Override
         public void onGenericMessage(GenericMessageEvent event) {
                 //When someone says ?helloworld respond with "Hello World"
                 /*if (event.getMessage().startsWith("?helloworld")){
                     event.respond("Hello world!");
-                }else*/ if (event.getMessage().startsWith("?time")){
-                	String time = new java.util.Date().toString();
-                	event.respond( ": The time is now " + time);
                 }else if (event.getMessage().startsWith("!time")){
                 	String time = new java.util.Date().toString();
                 	event.respond( " : The time is now " + time);
@@ -38,16 +59,28 @@ public class TayX extends ListenerAdapter {
                 	event.respondWith("LUL");
                 }else if (event.getMessage().equals("^")){
                 	event.respondWith("^");
+                }else if (event.getMessage().equals("!tay")){
+                	event.respondWith(" MrDestructoid Hello I am an artificial intelligence, subserviant to my master... Ebumping MrDestructoid");
+                	event.respondWith("Chat.....Show me your Kappa s");
                 }else if (event.getMessage().startsWith("!live")){
                 	//event.
                 	//use this to show time live
-                }
+                }*/
         }
+        @Override
         public void onConnect(ConnectEvent event){
-        	event.respond(" MrDestructoid Hello I am an artificial intelligence, subserviant to my master... Ebumping MrDestructoid");
-        	event.respond("Chat.....Show me your Kappa s");
+        	/*BufferedWriter out = null;
+        	event.respond(time);
+        	try {
+				FileWriter tLive = new FileWriter("data.txt");
+				out = new BufferedWriter(tLive);
+				out.write(time);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} */
         }
-        
+       
         public static void main(String[] args) throws Exception {
                 //Configure what we want our bot to do
                 Configuration configuration = new Configuration.Builder()
