@@ -3,12 +3,11 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="/pircbot"/>
-	<classpathentry kind="lib" path="mybot/pircbot-1.5.0/pircbot.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/apache-maven-3.3.9/lib/commons-codec-1.9.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/apache-maven-3.3.9/lib/commons-lang3-3.4.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/apache-maven-3.3.9/lib/guava-18.0.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/apache-maven-3.3.9/lib/slf4j-api-1.7.5.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/apache-maven-3.3.9/lib/slf4j-simple-1.7.5.jar"/>
-	<classpathentry kind="lib" path="C:/mybot/pircbotx-2.1.jar"/>
+	<classpathentry kind="lib" path="/Users/Ebumping/Downloads/apache-maven-3.3.9/lib/commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="/Users/Ebumping/Downloads/apache-maven-3.3.9/lib/guava-18.0.jar"/>
+	<classpathentry kind="lib" path="/Users/Ebumping/Downloads/apache-maven-3.3.9/lib/slf4j-api-1.7.5.jar"/>
+	<classpathentry kind="lib" path="/Users/Ebumping/Downloads/apache-maven-3.3.9/lib/slf4j-simple-1.7.5.jar"/>
+	<classpathentry kind="lib" path="/Users/Ebumping/Downloads/commons-codec-1.10/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="/Users/Ebumping/Desktop/mybot/pircbotx-2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
