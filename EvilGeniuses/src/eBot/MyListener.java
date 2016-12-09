@@ -6,24 +6,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
 import java.util.Scanner;
-
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
+import org.pircbotx.hooks.events.JoinEvent;
 import org.pircbotx.hooks.events.TimeEvent;
 import org.pircbotx.hooks.events.UserListEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
-
+//This class is the actual Listener that handles events
 public class MyListener extends ListenerAdapter {
 	private Users userlist;
-;
+
+		
 	
 	
 		@Override
 		public void onTime(TimeEvent event) throws Exception {
 			//BufferedWriter out = null;
 			super.onTime(event);
+			
 			
 		}
 		
@@ -37,6 +39,12 @@ public class MyListener extends ListenerAdapter {
 		}
         @Override
         public void onGenericMessage(GenericMessageEvent event) {
+        	/*try {
+				Scanner banner = new Scanner(new FileReader("ban.txt"));
+				banner.close();
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			}*/
                 //When someone says one of these respond accordingly
                 if (event.getMessage().startsWith("!time")){
                 	String time = new java.util.Date().toString();
@@ -77,7 +85,12 @@ public class MyListener extends ListenerAdapter {
 					}
                 	//event.
                 	//use this to show time live
+                }else if(event.getMessage() != null){
+                	
                 }
+                /*else if(event.getMessage().startsWith("!geebs")){
+                	
+                }*/
         }
         @Override
         public void onConnect(ConnectEvent event){
@@ -95,6 +108,13 @@ public class MyListener extends ListenerAdapter {
 			}
         }
         
+        @Override
+        public void onJoin(JoinEvent event) throws Exception {
+        	
+        	super.onJoin(event);
+        	event.respond("Welcome to the channel!");
+        	
+        }
 
         public static void main(String[] args) throws Exception {
                 //Configure what we want our bot to do
