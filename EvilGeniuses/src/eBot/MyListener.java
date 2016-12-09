@@ -130,7 +130,7 @@ public class MyListener extends ListenerAdapter {
         	
         	super.onJoin(event);
         	event.respond("Welcome to the channel");
-        	Thread.sleep(1000);
+        	
         	
 			BufferedWriter usrList = null;
 			try{
@@ -140,6 +140,7 @@ public class MyListener extends ListenerAdapter {
 			}catch (IOException e){
 				e.printStackTrace();
 			}
+			Thread.sleep(1000);
         }
         public static void main(String[] args) throws Exception {
                 //Configure what we want our bot to do
