@@ -90,7 +90,7 @@ public class TayX extends ListenerAdapter {
                 	    .addCapHandler(new EnableCapHandler("twitch.tv/membership")) //Twitch by default doesn't send JOIN, PART, and NAMES unless you request it
                 	    		//Without these responses the channel will confusingly only have 1 user, the bot itself
                 	    .addServer(address)
-                	    .setName("taybumping") //Your twitch.tv username
+                	    .setName("taybumping") //The bots twitch.tv username
                 	    .setServerPassword(OAUTH) //This is the password
                 	    .addAutoJoinChannel(channelName) //joins twitch channel
                                 .addListener(new MyListener()) //Add our listener that will be called on Events

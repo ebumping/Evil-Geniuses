@@ -9,8 +9,11 @@ import java.util.Scanner;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
+import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
+import org.pircbotx.hooks.events.JoinEvent;
+import org.pircbotx.hooks.events.PrivateMessageEvent;
 import org.pircbotx.hooks.events.TimeEvent;
 import org.pircbotx.hooks.events.UserListEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
@@ -29,11 +32,25 @@ public class MyListener extends ListenerAdapter {
 		
 		@Override
 		public void onUserList(UserListEvent event) throws Exception {
-			userlist = new Users();
+
 			//BufferedWriter usr = null;
 			super.onUserList(event);
 			event.getUsers().asList();
 			
+//append
+			
+			
+		}
+		@Override
+		public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
+			userlist = new Users();
+			super.onPrivateMessage(event);
+			if(event.getUser().getNick().equals("ebumping") && event.getMessage().startsWith("!users")){
+
+				event.respondPrivateMessage("");
+				
+				
+			}
 		}
         @Override
         public void onGenericMessage(GenericMessageEvent event) {
@@ -51,10 +68,17 @@ public class MyListener extends ListenerAdapter {
                 	event.respond(" : My current MMR | http://www.hotslogs.com/Player/Profile?PlayerID=757302");
                 }else if (event.getMessage().equalsIgnoreCase("gg")){
                 	event.respondWith("gg");
+                	try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {	
+						e.printStackTrace();
+					}
                 }else if (event.getMessage().equals("LUL")){
                 	event.respondWith("LUL");
+                	
                 }else if (event.getMessage().equals("^")){
                 	event.respondWith("^");
+                	
                 }else if (event.getMessage().equals("!tay")){
                 	event.respondWith(" MrDestructoid Hello I am an artificial intelligence, subserviant to my master... Ebumping MrDestructoid");
                 	event.respondWith("Chat.....Show me your Kappa s");
@@ -95,7 +119,28 @@ public class MyListener extends ListenerAdapter {
 			}
         }
         
-
+        @Override
+        public void onEvent(Event event) throws Exception {
+        	
+        	super.onEvent(event);
+        }
+        
+        @Override
+        public void onJoin(JoinEvent event) throws Exception {
+        	
+        	super.onJoin(event);
+        	event.respond("Welcome to the channel");
+        	Thread.sleep(1000);
+        	
+			BufferedWriter usrList = null;
+			try{
+				FileWriter users = new FileWriter("Userlist.txt");
+				usrList = new BufferedWriter(users);
+				usrList.append(event.getUser().getNick());
+			}catch (IOException e){
+				e.printStackTrace();
+			}
+        }
         public static void main(String[] args) throws Exception {
                 //Configure what we want our bot to do
                 Configuration configuration = new Configuration.Builder()
