@@ -127,20 +127,20 @@ public class MyListener extends ListenerAdapter {
         
         @Override
         public void onJoin(JoinEvent event) throws Exception {
-        	
-        	super.onJoin(event);
-        	event.respond("Welcome to the channel");
-        	
-        	
 			BufferedWriter usrList = null;
 			try{
 				FileWriter users = new FileWriter("Userlist.txt");
 				usrList = new BufferedWriter(users);
 				usrList.append(event.getUser().getNick());
+				usrList.close();
 			}catch (IOException e){
 				e.printStackTrace();
 			}
-			Thread.sleep(1000);
+			
+        	super.onJoin(event);
+        	event.respond("Welcome to the channel");
+        	Thread.sleep(1000);
+        	
         }
         public static void main(String[] args) throws Exception {
                 //Configure what we want our bot to do
