@@ -26,59 +26,16 @@ public class TayX extends ListenerAdapter {
 	
 		@Override
 		public void onTime(TimeEvent event) throws Exception {
-			BufferedWriter out = null;
-			super.onTime(event);
-			event.getTimestamp();
 		}
 		
 		@Override
 		public void onUserList(UserListEvent event) throws Exception {
-			//userlist = new Users();
-			//BufferedWriter usr = null;
-			super.onUserList(event);
-			event.getUsers().asList();
-		
 		}
         @Override
         public void onGenericMessage(GenericMessageEvent event) {
-                //When someone says ?helloworld respond with "Hello World"
-                /*if (event.getMessage().startsWith("?helloworld")){
-                    event.respond("Hello world!");
-                }else if (event.getMessage().startsWith("!time")){
-                	String time = new java.util.Date().toString();
-                	event.respond( " : The time is now " + time);
-                }else if (event.getMessage().startsWith("!malf")){
-                	event.respond(" : https://clips.twitch.tv/ebumping/SillyWaspDuDudu");	
-                }else if (event.getMessage().startsWith("!gust")){
-                	event.respond(" : https://clips.twitch.tv/ebumping/BrainyOctopusAsianGlow");	
-                }else if (event.getMessage().startsWith("!mmr")){
-                	event.respond(" : My current MMR | http://www.hotslogs.com/Player/Profile?PlayerID=757302");
-                }else if (event.getMessage().equalsIgnoreCase("gg")){
-                	event.respondWith("gg");
-                }else if (event.getMessage().equals("LUL")){
-                	event.respondWith("LUL");
-                }else if (event.getMessage().equals("^")){
-                	event.respondWith("^");
-                }else if (event.getMessage().equals("!tay")){
-                	event.respondWith(" MrDestructoid Hello I am an artificial intelligence, subserviant to my master... Ebumping MrDestructoid");
-                	event.respondWith("Chat.....Show me your Kappa s");
-                }else if (event.getMessage().startsWith("!live")){
-                	//event.
-                	//use this to show time live
-                }*/
         }
         @Override
         public void onConnect(ConnectEvent event){
-        	/*BufferedWriter out = null;
-        	event.respond(time);
-        	try {
-				FileWriter tLive = new FileWriter("data.txt");
-				out = new BufferedWriter(tLive);
-				out.write(time);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} */
         }
        
         public static void main(String[] args) throws Exception {
