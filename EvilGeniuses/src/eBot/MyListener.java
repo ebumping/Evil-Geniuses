@@ -1,10 +1,13 @@
 package eBot;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 import org.pircbotx.Configuration;
@@ -19,8 +22,8 @@ import org.pircbotx.hooks.events.UserListEvent;
 import org.pircbotx.hooks.types.GenericMessageEvent;
 
 public class MyListener extends ListenerAdapter {
-	private Users userlist;
-;
+	//private Database db;
+
 	
 	
 		@Override
@@ -35,25 +38,32 @@ public class MyListener extends ListenerAdapter {
 
 			//BufferedWriter usr = null;
 			super.onUserList(event);
-			event.getUsers().asList();
-			
-//append
+			event.getUsers().asList();			
 			
 			
 		}
 		@Override
 		public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
-			userlist = new Users();
+			//db = new Database();
 			super.onPrivateMessage(event);
 			if(event.getUser().getNick().equals("ebumping") && event.getMessage().startsWith("!users")){
-
 				event.respondPrivateMessage("");
 				
 				
 			}
 		}
         @Override
-        public void onGenericMessage(GenericMessageEvent event) {
+        public void onGenericMessage(GenericMessageEvent event) throws InterruptedException {
+        	List<String> banW = new ArrayList<String>();
+        		try {
+					Scanner banWords = new Scanner(new File("ban.txt"));
+					while(banWords.hasNext()){
+						banW.add(banWords.next());
+					}banWords.close();
+					
+				}catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				}
                 //When someone says one of these respond accordingly
                 if (event.getMessage().startsWith("!time")){
                 	String time = new java.util.Date().toString();
@@ -69,16 +79,24 @@ public class MyListener extends ListenerAdapter {
                 }else if (event.getMessage().equalsIgnoreCase("gg")){
                 	event.respondWith("gg");
                 	try {
-						Thread.sleep(1000);
+						Thread.sleep(5000);
 					} catch (InterruptedException e) {	
 						e.printStackTrace();
 					}
                 }else if (event.getMessage().equals("LUL")){
                 	event.respondWith("LUL");
-                	
+                	try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {	
+						e.printStackTrace();
+					}
                 }else if (event.getMessage().equals("^")){
                 	event.respondWith("^");
-                	
+                	try {
+						Thread.sleep(5000);
+					} catch (InterruptedException e) {	
+						e.printStackTrace();
+					}
                 }else if (event.getMessage().equals("!tay")){
                 	event.respondWith(" MrDestructoid Hello I am an artificial intelligence, subserviant to my master... Ebumping MrDestructoid");
                 	event.respondWith("Chat.....Show me your Kappa s");
@@ -101,6 +119,13 @@ public class MyListener extends ListenerAdapter {
 					}
                 	//event.
                 	//use this to show time live
+                }else if(event.getMessage().contains("tay")){
+                	event.respondWith("Haven't seen you in a while, how have you been " + event.getUser().getNick() + "?");
+                }else if(event.getMessage().contains("Tay")){
+                	event.respondWith("Haven't seen you in a while, how have you been " + event.getUser().getNick() + "?");
+                }else if(banW.contains(event.getMessage().toLowerCase())){
+                	//event.getBot();
+                	event.respondWith("/timeout " + event.getUser().getNick() + " 10");
                 }
         }
         @Override
@@ -114,7 +139,6 @@ public class MyListener extends ListenerAdapter {
 				out.write(time);
 				out.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
         }
@@ -127,19 +151,34 @@ public class MyListener extends ListenerAdapter {
         
         @Override
         public void onJoin(JoinEvent event) throws Exception {
+        	//db = new Database();        	
+        	Scanner usrRead = new Scanner(new File("Userlist.txt"));
+        	List<String> lUsers = new ArrayList<String>(); 
+        	while(usrRead.hasNext()){
+        		lUsers.add(usrRead.next());
+        	}
+        	usrRead.close();
 			BufferedWriter usrList = null;
+			
+			//make this a list so ! .contains works	
+			
+			//this appends new users to user list
 			try{
-				FileWriter users = new FileWriter("Userlist.txt");
+				FileWriter users = new FileWriter("Userlist.txt", true);
 				usrList = new BufferedWriter(users);
-				usrList.append(event.getUser().getNick());
+				if(!lUsers.contains(event.getUser().getNick())){									
+					usrList.append(event.getUser().getNick());
+					usrList.newLine();
+					usrList.flush();
+				}
 				usrList.close();
 			}catch (IOException e){
 				e.printStackTrace();
 			}
 			
         	super.onJoin(event);
-        	event.respond("Welcome to the channel");
-        	Thread.sleep(1000);
+        	//event.respond("Welcome to the channel");
+        	Thread.sleep(100);
         	
         }
         public static void main(String[] args) throws Exception {
