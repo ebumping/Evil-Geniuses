@@ -35,13 +35,11 @@ public class MyListener extends ListenerAdapter {
 		
 		@Override
 		public void onUserList(UserListEvent event) throws Exception {
-
 			//BufferedWriter usr = null;
 			super.onUserList(event);
 			event.getUsers().asList();			
-			
-			
 		}
+		
 		@Override
 		public void onPrivateMessage(PrivateMessageEvent event) throws Exception {
 			//db = new Database();
@@ -55,6 +53,7 @@ public class MyListener extends ListenerAdapter {
         @Override
         public void onGenericMessage(GenericMessageEvent event) throws InterruptedException {
         	List<String> banW = new ArrayList<String>();
+        	//List of words that result in a 10 second ban and removal of text
         	//This scanner creates a list of words the bot will timeout for 10 seconds if written in chat
         		try {
 					Scanner banWords = new Scanner(new File("ban.txt"));
@@ -68,12 +67,14 @@ public class MyListener extends ListenerAdapter {
                 if (event.getMessage().startsWith("!time")){
                 	String time = new java.util.Date().toString();
                 	event.respond( " : The time is now " + time);
+                	//Respond to user with current time
                 }else if (event.getMessage().startsWith("!malf")){
                 	event.respond(" : https://clips.twitch.tv/ebumping/SillyWaspDuDudu");	
                 }else if (event.getMessage().startsWith("!gust")){
                 	event.respond(" : https://clips.twitch.tv/ebumping/BrainyOctopusAsianGlow");	
                 }else if (event.getMessage().startsWith("!vp")){
                 	event.respond("https://clips.twitch.tv/ebumping/AverageGoatShibeZ");
+                	//the above three commands provide stream highlight clips
         		}else if (event.getMessage().startsWith("!mmr")){
                 	event.respond(" : My current MMR | http://www.hotslogs.com/Player/Profile?PlayerID=757302");
                 }else if (event.getMessage().equalsIgnoreCase("gg")){
@@ -114,17 +115,20 @@ public class MyListener extends ListenerAdapter {
 								timeRead.next() +
 								" " +
 								timeRead.next());
+						//timeRead.next() only returns a single piece of the time broadcast started, this reconstructs the
+						//pieces into a more readable line in the chat
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();
 					}
                 	//event.
-                	//use this to show time live
+                	//use this to show the time when broadcast started
                 }else if(event.getMessage().contains("tay")){
                 	event.respondWith("Haven't seen you in a while, how have you been " + event.getUser().getNick() + "?");
                 }else if(event.getMessage().contains("Tay")){
                 	event.respondWith("Haven't seen you in a while, how have you been " + event.getUser().getNick() + "?");
+                	//when someone mentions Tay she will start talking to them
                 }else if(banW.contains(event.getMessage().toLowerCase())){
-                	//event.getBot();
+                	//used string concatenation to timeout users who write a word that exists within ban.txt
                 	event.respondWith("/timeout " + event.getUser().getNick() + " 10");
                 }else if(event.getMessage().startsWith("!tributes")){
                 	event.respondWith("m.imgur.com/529ahUH");
@@ -166,7 +170,7 @@ public class MyListener extends ListenerAdapter {
         
         @Override
         public void onJoin(JoinEvent event) throws Exception {
-        	      	
+        	      	//when a user(possibly us) joins the channel, see if they exist within Userlist.txt
         	Scanner usrRead = new Scanner(new File("Userlist.txt"));        	
         	while(usrRead.hasNext()){
         		lUsers.add(usrRead.next());
@@ -178,6 +182,8 @@ public class MyListener extends ListenerAdapter {
 			try{
 				FileWriter users = new FileWriter("Userlist.txt", true);
 				usrList = new BufferedWriter(users);
+				//if the user who just joined does not exist in Userlist.txt, 
+				//add them to it on a new line without removing the previous users
 				if(!lUsers.contains(event.getUser().getNick())){									
 					usrList.append(event.getUser().getNick());
 					usrList.newLine();
@@ -188,6 +194,7 @@ public class MyListener extends ListenerAdapter {
 				e.printStackTrace();
 			}			
         	super.onJoin(event);
+        	//the commented code below will welcome people who join the channel
         	//event.respond("Welcome to the channel");
         	//Thread.sleep(100);        	
         }
