@@ -44,6 +44,8 @@ public class TayX extends ListenerAdapter {
                 		.setAutoNickChange(false) //Twitch doesn't support multiple users
                 	    .setOnJoinWhoEnabled(false) //Twitch doesn't support WHO command
                 	    .setCapEnabled(true)
+                	    .setAutoReconnect(true)
+                	    .setAutoReconnectAttempts(5)
                 	    .addCapHandler(new EnableCapHandler("twitch.tv/membership")) //Twitch by default doesn't send JOIN, PART, and NAMES unless you request it
                 	    		//Without these responses the channel will confusingly only have 1 user, the bot itself
                 	    .addServer(address)
@@ -52,6 +54,7 @@ public class TayX extends ListenerAdapter {
                 	    .addAutoJoinChannel(channelName) //joins twitch channel
                                 .addListener(new MyListener()) //Add our listener that will be called on Events
                                 .buildConfiguration();
+                		
 
                 //Create our bot with the configuration
                 PircBotX tay = new PircBotX(configuration);

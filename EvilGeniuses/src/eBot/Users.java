@@ -1,20 +1,19 @@
 package eBot;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Users {
-	private String nick;
-	public Users(String nick){
-		this.nick = nick;
-		//for(Users x : users);		
-		
+	private String users;
+	
+	public Users(String users){
+		this.users = users;
+		//for(Users x : users);				
 	}
-	public String getNick() {
-		return nick;
+	
+	public String getUsers() {
+		return users;
 	}
-	public void setNick(String nick) {
-		this.nick = nick;
+	
+	public void setUsers(String users) {
+		this.users = users;
 	}
 
 }

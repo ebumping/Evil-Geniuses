@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Database {
-	List<Users> users = new ArrayList<Users>(); 
+	/*List<Users> users = new ArrayList<Users>(); 
 
 
 	public Database(){
@@ -21,6 +21,6 @@ public class Database {
 			
 		
 
-	}
+	}*/
 
 }

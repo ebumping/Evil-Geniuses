@@ -15,6 +15,7 @@ import org.pircbotx.PircBotX;
 import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.ConnectEvent;
+import org.pircbotx.hooks.events.DisconnectEvent;
 import org.pircbotx.hooks.events.JoinEvent;
 import org.pircbotx.hooks.events.PrivateMessageEvent;
 import org.pircbotx.hooks.events.TimeEvent;
@@ -23,14 +24,13 @@ import org.pircbotx.hooks.types.GenericMessageEvent;
 
 public class MyListener extends ListenerAdapter {
 	//private Database db;
-
-	
+	List<String> lUsers = new ArrayList<String>();
 	
 		@Override
 		public void onTime(TimeEvent event) throws Exception {
 			//BufferedWriter out = null;
 			super.onTime(event);
-			
+			//event.wait(60000000);
 		}
 		
 		@Override
@@ -55,12 +55,12 @@ public class MyListener extends ListenerAdapter {
         @Override
         public void onGenericMessage(GenericMessageEvent event) throws InterruptedException {
         	List<String> banW = new ArrayList<String>();
+        	//This scanner creates a list of words the bot will timeout for 10 seconds if written in chat
         		try {
 					Scanner banWords = new Scanner(new File("ban.txt"));
 					while(banWords.hasNext()){
 						banW.add(banWords.next());
-					}banWords.close();
-					
+					}banWords.close();					
 				}catch (FileNotFoundException e1) {
 					e1.printStackTrace();
 				}
@@ -126,8 +126,23 @@ public class MyListener extends ListenerAdapter {
                 }else if(banW.contains(event.getMessage().toLowerCase())){
                 	//event.getBot();
                 	event.respondWith("/timeout " + event.getUser().getNick() + " 10");
+                }else if(event.getMessage().startsWith("!tributes")){
+                	event.respondWith("m.imgur.com/529ahUH");
+                }else if(event.getMessage().startsWith("!commands")){
+                	event.respondWith("What I know right now, try !time !mmr !live !tay !tributes");
+                	event.respondWith("Ebumping will teach me more soon MrDestructoid");
                 }
         }
+        
+        @Override
+        public void onDisconnect(DisconnectEvent event){
+        	try {
+				event.getBot();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+        }
+        
         @Override
         public void onConnect(ConnectEvent event){
         	String time = new java.util.Date().toString();
@@ -151,17 +166,14 @@ public class MyListener extends ListenerAdapter {
         
         @Override
         public void onJoin(JoinEvent event) throws Exception {
-        	//db = new Database();        	
-        	Scanner usrRead = new Scanner(new File("Userlist.txt"));
-        	List<String> lUsers = new ArrayList<String>(); 
+        	      	
+        	Scanner usrRead = new Scanner(new File("Userlist.txt"));        	
         	while(usrRead.hasNext()){
         		lUsers.add(usrRead.next());
         	}
         	usrRead.close();
-			BufferedWriter usrList = null;
-			
-			//make this a list so ! .contains works	
-			
+			BufferedWriter usrList = null;			
+			//make this a list so ! .contains works				
 			//this appends new users to user list
 			try{
 				FileWriter users = new FileWriter("Userlist.txt", true);
@@ -174,17 +186,18 @@ public class MyListener extends ListenerAdapter {
 				usrList.close();
 			}catch (IOException e){
 				e.printStackTrace();
-			}
-			
+			}			
         	super.onJoin(event);
         	//event.respond("Welcome to the channel");
-        	Thread.sleep(100);
-        	
+        	//Thread.sleep(100);        	
         }
+        
         public static void main(String[] args) throws Exception {
                 //Configure what we want our bot to do
                 Configuration configuration = new Configuration.Builder()
                                 .setName("TayX") //Set the nick of the bot.
+                                .setAutoReconnect(true)
+                                .setAutoReconnectAttempts(5)
                                 .addServer("irc.freenode.net") //Join the freenode network
                                 .addAutoJoinChannel("#pircbotx") //Join the official #pircbotx channel
                                 .addListener(new MyListener()) //Add our listener that will be called on Events
